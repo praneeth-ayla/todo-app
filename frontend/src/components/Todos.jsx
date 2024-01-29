@@ -6,7 +6,7 @@ export function Todos({ todos }) {
 					<div>
 						<h1>{todo.title}</h1>
 						<h2>{todo.description}</h2>
-						<button>
+						<button onClick={fetchTodos}>
 							{todo.complete == true
 								? "Completed"
 								: "Mark as complete"}
