@@ -5,7 +5,7 @@ mongoose.connect("mongodb+srv://admin:7TJaFOLSF1g9GjIO@cluster0.sduruc7.mongodb.
 
 const todoSchema = mongoose.Schema({
     title: String,
-    descripion: String,
+    description: String,
     completed: Boolean,
 })
 
