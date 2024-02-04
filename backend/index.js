@@ -47,7 +47,8 @@ app.put("/completed", async function (req, res) {
     await todo.findByIdAndUpdate({
         _id: req.body.id
     }, {
-        completed: true
+        completed: updatePayload.status
+
     })
     res.json({
         msg: "Todo marked as completed"
