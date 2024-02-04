@@ -1,64 +1,42 @@
 import { useState } from "react";
+import axios from "axios";
 
 export function CreateTodo() {
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 
-	async function addTodos() {
-		const updatedRes = await fetch("http://localhost:3000/todo", {
-			method: "POST",
-			body: JSON.stringify({
-				title: document.getElementById("title").value,
-				description: document.getElementById("description").value,
-			}),
-			headers: {
-				"content-type": "application/json",
-			},
-		});
-		function fetchTodos() {
-			fetch("http://localhost:3000/todos").then(async function (res) {
-				const json = await res.json();
-				setTodos(json.todos);
-			});
-		}
+	const handleAdd = () => {
+		axios
+			.post("http://localhost:3000/todo", {
+				title: title,
+				description: description,
+			})
+			.catch((err) => console.log(err));
+	};
 
-		if (updatedRes.ok) {
-			alert("Todo added");
-			fetchTodos();
-		} else {
-			alert("Failed to add todo");
-		}
-	}
 	return (
 		<div>
 			<input
 				type="text"
 				placeholder="title"
 				id="title"
+				className="inputField"
 				style={{
 					padding: "10px",
 					margin: "10px",
 				}}
+				onChange={(e) => setTitle(e.target.value)}
 			/>
 			<br />
 			<input
 				type="text"
 				placeholder="description"
 				id="description"
-				style={{
-					padding: "10px",
-					margin: "10px",
-				}}
+				className="inputField"
+				onChange={(e) => setDescription(e.target.value)}
 			/>
 			<br />
-			<button
-				style={{
-					padding: "10px",
-					margin: "10px",
-				}}
-				onClick={addTodos}>
-				Add a todo
-			</button>
+			<button onClick={handleAdd}>Add a todo</button>
 		</div>
 	);
 }
