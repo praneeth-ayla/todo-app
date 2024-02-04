@@ -12,6 +12,8 @@ export function CreateTodo() {
 				description: description,
 			})
 			.catch((err) => console.log(err));
+		setDescription("");
+		setTitle("");
 	};
 
 	return (
