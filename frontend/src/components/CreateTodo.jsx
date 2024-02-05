@@ -24,11 +24,7 @@ export function CreateTodo() {
 				type="text"
 				placeholder="title"
 				id="title"
-				className="inputField"
-				style={{
-					padding: "10px",
-					margin: "10px",
-				}}
+				className="text-red-400 border-4 border-indigo-500/100"
 				onChange={(e) => setTitle(e.target.value)}
 				minLength={"1"}
 			/>
