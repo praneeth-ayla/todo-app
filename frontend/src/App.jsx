@@ -12,7 +12,7 @@ function App() {
 			setTodos(res);
 		});
 	}
-	useEffect(fetchTodos, []);
+	useEffect(fetchTodos, [todos]);
 
 	return (
 		<div>

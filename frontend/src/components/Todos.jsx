@@ -32,6 +32,16 @@ export function Todos({ todos, setTodos }) {
 				// console.log(err), console.log(id, complete);
 			});
 	}
+	function deleteTodo(id) {
+		console.log(id);
+		axios
+			.delete("http://localhost:3000/delete", { data: { id } })
+			.then((res) => {
+				fetchTodos();
+				console.log("todo delted");
+			})
+			.catch((err) => console.log(err));
+	}
 
 	return (
 		<div>
@@ -45,6 +55,9 @@ export function Todos({ todos, setTodos }) {
 								updateTodo(todo._id, todo.completed)
 							}>
 							{todo.completed ? "Completed" : "Mark as complete"}
+						</button>
+						<button onClick={() => deleteTodo(todo._id)}>
+							Delete Todo
 						</button>
 					</div>
 				);

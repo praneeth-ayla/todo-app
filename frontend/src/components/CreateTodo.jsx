@@ -6,14 +6,16 @@ export function CreateTodo() {
 	const [description, setDescription] = useState("");
 
 	const handleAdd = () => {
-		axios
-			.post("http://localhost:3000/todo", {
-				title: title,
-				description: description,
-			})
-			.catch((err) => console.log(err));
-		setDescription("");
-		setTitle("");
+		if (title.length > 1) {
+			axios
+				.post("http://localhost:3000/todo", {
+					title: title,
+					description: description,
+				})
+				.catch((err) => console.log(err));
+		} else {
+			return alert("Title can't be empty");
+		}
 	};
 
 	return (
@@ -28,6 +30,7 @@ export function CreateTodo() {
 					margin: "10px",
 				}}
 				onChange={(e) => setTitle(e.target.value)}
+				minLength={"1"}
 			/>
 			<br />
 			<input
