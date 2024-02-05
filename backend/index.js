@@ -55,4 +55,12 @@ app.put("/completed", async function (req, res) {
     })
 })
 
+app.delete("/delete", async (req, res) => {
+    const id = req.body.id;
+    await todo.findByIdAndDelete(id)
+    res.json({
+        msg: "Todo Deleted"
+    })
+})
+
 app.listen(3000);
