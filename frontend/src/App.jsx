@@ -8,10 +8,12 @@ function App() {
 	const [todos, setTodos] = useState([]);
 
 	function fetchTodos() {
-		axios.get("http://localhost:3000/todos").then((e) => {
-			const res = e.data.todos;
-			setTodos(res);
-		});
+		axios
+			.get("https://todoapp-backend-bhep.onrender.com/todos")
+			.then((e) => {
+				const res = e.data.todos;
+				setTodos(res);
+			});
 	}
 	useEffect(fetchTodos, []);
 

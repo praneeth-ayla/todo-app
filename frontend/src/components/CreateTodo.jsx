@@ -8,7 +8,7 @@ export function CreateTodo({ fetchTodos }) {
 	const handleAdd = () => {
 		if (title.length >= 1) {
 			axios
-				.post("http://localhost:3000/todo", {
+				.post("https://todoapp-backend-bhep.onrender.com/todo", {
 					title: title,
 					description: description,
 				})

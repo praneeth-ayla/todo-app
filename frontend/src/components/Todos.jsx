@@ -17,7 +17,7 @@ export function Todos({ todos, setTodos, fetchTodos }) {
 			};
 		}
 		axios
-			.put("http://localhost:3000/completed", data)
+			.put("https://todoapp-backend-bhep.onrender.com/completed", data)
 			.then((res) => {
 				fetchTodos();
 			})
@@ -27,7 +27,9 @@ export function Todos({ todos, setTodos, fetchTodos }) {
 	}
 	function deleteTodo(id) {
 		axios
-			.delete("http://localhost:3000/delete", { data: { id } })
+			.delete("https://todoapp-backend-bhep.onrender.com/delete", {
+				data: { id },
+			})
 			.then((res) => {
 				fetchTodos();
 			})
